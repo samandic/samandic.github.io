@@ -8,22 +8,36 @@ app.all('/', (req, res) => {
 app.post("/insertEvent", async (req, res) => {
   console.log(req.body); // your JSON
   var result = await insertTelegramEvent(req.body);
+  console.log('result:' + result);
   res.send(result);
 });
 
-
 async function insertTelegramEvent(bodydata) {
   console.log('received:' + JSON.stringify(bodydata));
-  fetch('https://api.telegram.org/bot5898404192:AAEoxoZ-X4hF3eHfu1g1Sg0NdNhc3OPaP0s/sendMessage', {
+  var result = await fetch('https://api.telegram.org/bot5898404192:AAEoxoZ-X4hF3eHfu1g1Sg0NdNhc3OPaP0s/sendMessage', {
     method: 'POST',
     headers: {
       'Accept': 'application/json, text/plain, */*',
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(bodydata)//JSON.stringify({a: 7, str: 'Some string: &=&'})
+  })
+    console.log(result.json());
+    return result.json();
+}
+
+/*async function insertTelegramEvent(bodydata) {
+  console.log('received:' + JSON.stringify(bodydata));
+  fetch('https://api.telegram.org/bot5898404192:AAEoxoZ-X4hF3eHfu1g1Sg0NdNhc3OPaP0s/sendMessage', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json, text/plain',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(bodydata)//JSON.stringify({a: 7, str: 'Some string: &=&'})
   }).then(res => res.json())
     .then(res => console.log(res));
-}
+}*/
 
 app.listen(process.env.PORT || 3000)
 
