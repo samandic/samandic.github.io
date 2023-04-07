@@ -24,8 +24,8 @@ async function insertTelegramEvent(bodydata) {
   })
     const jsonData = await response.json();
 
-    console.log('response.json()' + jsonData);
-    return response.json();
+    console.log('response.json()' + JSON.stringify(jsonData));
+    return JSON.stringify(jsonData);
 }
 
 /*async function insertTelegramEvent(bodydata) {
