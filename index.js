@@ -6,9 +6,10 @@ app.all('/', (req, res) => {
     res.send('Yo!')
 })
 app.post("/insertEvent", (req, res) => {
-  console.log(req.body); // your JSON
-  var result = insertTelegramEvent(req.body);
-  res.send(req.body);
+  //console.log(req.body); // your JSON
+  console.log(req);
+  var result = insertTelegramEvent(req);
+  //res.send(req.body);
 });
 
 
