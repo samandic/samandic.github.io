@@ -1,15 +1,14 @@
 const express = require('express')
 const app = express()
-//app.use(express.json());
+app.use(express.json());
 app.all('/', (req, res) => {
     console.log("Just got a request!")
     res.send('Yo!')
 })
 app.post("/insertEvent", (req, res) => {
-  //console.log(req.body); // your JSON
-  console.log(req);
-  var result = insertTelegramEvent(req);
-  //res.send(req.body);
+  console.log(req.body); // your JSON
+  var result = insertTelegramEvent(req.body);
+  res.send(req.body);
 });
 
 
