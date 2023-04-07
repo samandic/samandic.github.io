@@ -8,8 +8,8 @@ app.all('/', (req, res) => {
 app.post("/insertEvent", async (req, res) => {
   console.log(req.body); // your JSON
   var result = await insertTelegramEvent(req.body);
-  console.log('result:' + result);
-  res.send(result);
+  //console.log('result:' + result);
+  //res.send(result);
 });
 
 async function insertTelegramEvent(bodydata) {
@@ -23,9 +23,10 @@ async function insertTelegramEvent(bodydata) {
     body: JSON.stringify(bodydata)//JSON.stringify({a: 7, str: 'Some string: &=&'})
   })
     const jsonData = await response.json();
-
     console.log('response.json()' + JSON.stringify(jsonData));
-    return JSON.stringify(jsonData);
+    const result = await JSON.stringify(jsonData);
+    console.log('result' + result);
+    return result;
 }
 
 /*async function insertTelegramEvent(bodydata) {
