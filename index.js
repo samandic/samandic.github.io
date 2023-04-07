@@ -14,7 +14,7 @@ app.post("/insertEvent", async (req, res) => {
 
 async function insertTelegramEvent(bodydata) {
   console.log('received:' + JSON.stringify(bodydata));
-  var result = await fetch('https://api.telegram.org/bot5898404192:AAEoxoZ-X4hF3eHfu1g1Sg0NdNhc3OPaP0s/sendMessage', {
+  var response = await fetch('https://api.telegram.org/bot5898404192:AAEoxoZ-X4hF3eHfu1g1Sg0NdNhc3OPaP0s/sendMessage', {
     method: 'POST',
     headers: {
       'Accept': 'application/json, text/plain, */*',
@@ -22,8 +22,10 @@ async function insertTelegramEvent(bodydata) {
     },
     body: JSON.stringify(bodydata)//JSON.stringify({a: 7, str: 'Some string: &=&'})
   })
-    console.log('result.json()' + result.json());
-    return result.json();
+    const jsonData = await response.json();
+
+    console.log('response.json()' + jsonData);
+    return response.json();
 }
 
 /*async function insertTelegramEvent(bodydata) {
