@@ -22,7 +22,7 @@ async function insertTelegramEvent(bodydata) {
     },
     body: JSON.stringify(bodydata)//JSON.stringify({a: 7, str: 'Some string: &=&'})
   })
-    console.log(result.json());
+    console.log('result.json()' + result.json());
     return result.json();
 }
 
