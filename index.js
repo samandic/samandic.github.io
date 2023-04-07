@@ -7,22 +7,20 @@ app.all('/', (req, res) => {
 })
 app.post("/insertEvent", (req, res) => {
   console.log(req.body); // your JSON
-  var result = insertEvent(req.body);
+  var result = insertTelegramEvent(req.body);
   res.send(req.body);
 });
 
-function insertEvent(event) {
-    console.log(event.data);
-    logJSONData();
-}
-async function logJSONData() {
+
+async function insertTelegramEvent(bodydata) {
+  console.log('received:' + bodydata);
   fetch('https://api.telegram.org/bot5898404192:AAEoxoZ-X4hF3eHfu1g1Sg0NdNhc3OPaP0s/sendMessage', {
     method: 'POST',
     headers: {
       'Accept': 'application/json, text/plain, */*',
       'Content-Type': 'application/json'
     },
-    body: '{"chat_id":-1001911823358,"text":"Hello from Github"}'//JSON.stringify({a: 7, str: 'Some string: &=&'})
+    body: bodydata//JSON.stringify({a: 7, str: 'Some string: &=&'})
   }).then(res => res.json())
     .then(res => console.log(res));
 }
