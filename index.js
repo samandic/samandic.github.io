@@ -5,10 +5,10 @@ app.all('/', (req, res) => {
     console.log("Just got a request!")
     res.send('Yo!')
 })
-app.post("/insertEvent", (req, res) => {
+app.post("/insertEvent", async (req, res) => {
   console.log(req.body); // your JSON
-  //var result = insertTelegramEvent(req.body);
-  res.send(req.body);
+  var result = await insertTelegramEvent(req.body);
+  res.send(result);
 });
 
 
