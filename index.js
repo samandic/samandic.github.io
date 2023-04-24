@@ -3,7 +3,7 @@ const app = express()
 app.use(express.json());
 app.all('/', (req, res) => {
     console.log("Just got a request!")
-    res.send('Yo!')
+    res.send('Yo! Im alive !')
 })
 app.post("/insertEvent", async (req, res) => {
   console.log(req.body); // your JSON
